@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iLuviee Developer</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts (Space Grotesk & Inter) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#0b071e] text-gray-100 font-['Inter'] overflow-x-hidden relative">
+
+    <!-- Background Galaxy Canvas -->
+    <canvas id="stars" class="fixed top-0 left-0 w-full h-full -z-10 pointer-events-none"></canvas>
+    
+    <!-- Glowing Nebulas -->
+    <div class="nebula-1"></div>
+    <div class="nebula-2"></div>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 backdrop-blur-md border-b border-purple-500/10 bg-[#0b071e]/40 py-4 px-6 md:px-12 flex justify-between items-center transition-all duration-300">
+        <a href="#" class="font-['Space_Grotesk'] text-2xl font-bold bg-gradient-to-r from-purple-400 to-fuchsia-500 bg-clip-text text-transparent tracking-wider">
+            iLuviee
+        </a>
+        
+        <div class="hidden md:flex space-x-8 text-sm font-medium tracking-wide">
+            <a href="#home" class="hover:text-purple-400 transition-colors duration-300">Home</a>
+            <a href="#about" class="hover:text-purple-400 transition-colors duration-300">About</a>
+            <a href="#skills" class="hover:text-purple-400 transition-colors duration-300">Skills</a>
+            <a href="#education" class="hover:text-purple-400 transition-colors duration-300">Education</a>
+            <a href="#gallery" class="hover:text-purple-400 transition-colors duration-300">Gallery</a>
+            <a href="#projects" class="hover:text-purple-400 transition-colors duration-300">Projects</a>
+            <a href="#contact" class="hover:text-purple-400 transition-colors duration-300">Contact</a>
+        </div>
+        
+        <button class="md:hidden text-2xl focus:outline-none cursor-pointer z-50 p-1" id="menu-btn">
+            <i id="menu-icon" class="fa-solid fa-bars-staggered text-purple-400 transition-transform duration-300"></i>
+        </button>
+
+        <div id="mobile-menu" class="absolute top-[70px] right-6 w-48 bg-[#130d31]/90 backdrop-blur-xl border border-purple-500/20 rounded-2xl p-4 flex flex-col space-y-4 text-base font-['Space_Grotesk'] tracking-wide opacity-0 pointer-events-none scale-95 transition-all duration-300 ease-out md:hidden z-40 shadow-[0_10px_30px_rgba(168,85,247,0.15)]">
+            <a href="#home" class="mobile-link text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center gap-3 py-1 px-2 rounded-lg hover:bg-purple-500/10"><i class="fa-solid fa-house text-xs text-purple-400/70"></i> Home</a>
+            <a href="#about" class="mobile-link text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center gap-3 py-1 px-2 rounded-lg hover:bg-purple-500/10"><i class="fa-solid fa-user text-xs text-purple-400/70"></i> About</a>
+            <a href="#skills" class="mobile-link text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center gap-3 py-1 px-2 rounded-lg hover:bg-purple-500/10"><i class="fa-solid fa-atom text-xs text-purple-400/70"></i> Skills</a>
+            <a href="#education" class="mobile-link text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center gap-3 py-1 px-2 rounded-lg hover:bg-purple-500/10"><i class="fa-solid fa-rocket text-xs text-purple-400/70"></i> Education</a>
+            <a href="#gallery" class="mobile-link text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center gap-3 py-1 px-2 rounded-lg hover:bg-purple-500/10"><i class="fa-solid fa-meteor text-xs text-purple-400/70"></i> Gallery</a>
+            <a href="#projects" class="mobile-link text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center gap-3 py-1 px-2 rounded-lg hover:bg-purple-500/10"><i class="fa-solid fa-star text-xs text-purple-400/70"></i> Projects</a>
+            <a href="#contact" class="mobile-link text-gray-300 hover:text-purple-400 transition-colors duration-200 flex items-center gap-3 py-1 px-2 rounded-lg hover:bg-purple-500/10"><i class="fa-solid fa-envelope text-xs text-purple-400/70"></i> Contact</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative pt-20">
+        <div data-aos="zoom-in" data-aos-duration="1500" class="relative mb-6">
+            <div class="absolute inset-0 bg-purple-600 rounded-full blur-2xl opacity-40 animate-pulse"></div>
+            <!-- Ganti URL gambar di bawah dengan foto/avatar kamu -->
+            <img src="./source/Hero/pfp.jpeg" 
+                 alt="Profile" class="w-32 h-32 md:w-40 md:h-40 rounded-full border-2 border-purple-500 object-cover relative z-10 floating shadow-[0_0_30px_rgba(168,85,247,0.4)]">
+        </div>
+        
+        <h1 data-aos="fade-up" data-aos-delay="300" class="font-['Space_Grotesk'] text-4xl md:text-7xl font-bold tracking-tight max-w-4xl leading-tight">
+            Rafif Gading Aganisutha <br>
+            <span class="text-2xl md:text-5xl bg-gradient-to-r from-purple-400 via-fuchsia-500 to-indigo-400 bg-clip-text text-transparent">
+                Coding | Gaming | Music
+            </span>
+        </h1>
+        
+        <p data-aos="fade-up" data-aos-delay="500" class="mt-6 text-gray-400 max-w-xl text-base md:text-lg font-light leading-relaxed">
+            Building immersive digital experiences where technology meets cosmic aesthetics. Let's build something out of this world.
+        </p>
+
+        <div data-aos="fade-up" data-aos-delay="700" class="mt-10 flex space-x-4">
+            <a href="#projects" class="px-8 py-3 rounded-full bg-gradient-to-r from-purple-600 to-fuchsia-600 font-medium text-sm hover:shadow-[0_0_25px_rgba(168,85,247,0.6)] hover:scale-105 transition-all duration-300">
+                View My Orbit
+            </a>
+            <a href="#contact" class="px-8 py-3 rounded-full border border-purple-500/30 bg-purple-500/5 backdrop-blur-sm font-medium text-sm hover:bg-purple-500/10 hover:border-purple-500 transition-all duration-300">
+                Contact Me
+            </a>
+        </div>
+
+        <div class="absolute bottom-10 animate-bounce text-purple-400/60">
+            <i class="fa-solid fa-chevron-down text-xl"></i>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 px-6 md:px-12 max-w-6xl mx-auto">
+        <div class="text-center">
+            <h2 class="font-['Space_Grotesk'] text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+                About me
+            </h2>
+            <p class="text-gray-400 mt-3 font-light">
+                Short introduction about me
+            </p>
+        </div>
+        <div class="mt-12 max-w-5xl mx-auto space-y-8" data-aos="fade-up" data-aos-duration="1200">
+            
+            <!-- Row 1: Coding -->
+            <div class="story-row story-in group flex flex-col md:flex-row items-start gap-6 p-6 rounded-2xl border border-purple-500/10 bg-[#130d31]/20 backdrop-blur-md transition-all duration-500">
+                <div class="flex items-center gap-4 md:flex-col md:items-center min-w-[120px]">
+                    <div class="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center border border-purple-500/30 text-purple-400 text-lg group-hover:scale-110 group-hover:bg-purple-600 group-hover:text-white group-hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] transition-all duration-300">
+                        <i class="fa-solid fa-code animate-pulse"></i>
+                    </div>
+                    <span class="font-['Space_Grotesk'] font-bold tracking-wider text-sm text-purple-300 uppercase md:mt-2">01 / Code</span>
+                </div>
+                <div class="flex-1">
+                    <p class="text-gray-300 text-base md:text-lg font-light leading-relaxed">
+                        Sebagai seorang digital nomad yang menjelajahi luasnya <span class="text-purple-400 font-medium">cyber galaxy</span>, saya mendedikasikan waktu untuk merajut baris-baris kode. Bagi saya, <span class="bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent font-semibold">Coding</span> bukan sekadar menyusun sintaks biasa, melainkan proses mengeksplorasi logika, membangun arsitektur sistem yang clean, dan mengotomatisasi lingkungan kerja agar berjalan harmonis di dalam ekosistem sistem operasi yang saya kelola.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Row 2: Gaming -->
+            <div class="story-row story-in group flex flex-col md:flex-row items-start gap-6 p-6 rounded-2xl border border-purple-500/10 bg-[#130d31]/20 backdrop-blur-md transition-all duration-500">
+                <div class="flex items-center gap-4 md:flex-col md:items-center min-w-[120px]">
+                    <div class="w-12 h-12 rounded-full bg-fuchsia-500/10 flex items-center justify-center border border-fuchsia-500/30 text-fuchsia-400 text-lg group-hover:scale-110 group-hover:bg-fuchsia-600 group-hover:text-white group-hover:shadow-[0_0_20px_rgba(236,72,153,0.5)] transition-all duration-300">
+                        <i class="fa-solid fa-gamepad"></i>
+                    </div>
+                    <span class="font-['Space_Grotesk'] font-bold tracking-wider text-sm text-fuchsia-300 uppercase md:mt-2">02 / Play</span>
+                </div>
+                <div class="flex-1">
+                    <p class="text-gray-300 text-base md:text-lg font-light leading-relaxed">
+                        Ketika baris kode mulai menemui titik jenuh, koordinat radar langsung dialihkan menuju dunia virtual. Aktivitas <span class="bg-gradient-to-r from-fuchsia-400 to-indigo-400 bg-clip-text text-transparent font-semibold">Gaming</span> menjadi ruang rekreasi terbaik di mana kreativitas dan strategi tetap menyala—baik saat menyelami mekanisme open-world yang imersif, maupun menantang diri mengonfigurasi dan mengelola teknis server game berbasis komunitas secara mandiri di balik layar.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Row 3: Music -->
+            <div class="story-row story-in group flex flex-col md:flex-row items-start gap-6 p-6 rounded-2xl border border-purple-500/10 bg-[#130d31]/20 backdrop-blur-md transition-all duration-500">
+                <div class="flex items-center gap-4 md:flex-col md:items-center min-w-[120px]">
+                    <div class="w-12 h-12 rounded-full bg-indigo-500/10 flex items-center justify-center border border-indigo-500/30 text-indigo-400 text-lg group-hover:scale-110 group-hover:bg-indigo-600 group-hover:text-white group-hover:shadow-[0_0_20px_rgba(99,102,241,0.5)] transition-all duration-300">
+                        <i class="fa-solid fa-music"></i>
+                    </div>
+                    <span class="font-['Space_Grotesk'] font-bold tracking-wider text-sm text-indigo-300 uppercase md:mt-2">03 / Tune</span>
+                </div>
+                <div class="flex-1">
+                    <p class="text-gray-300 text-base md:text-lg font-light leading-relaxed">
+                        Namun, seluruh petualangan digital ini tidak akan pernah lengkap tanpa adanya atmosfer yang tepat. Di sinilah <span class="bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent font-semibold">Music</span> hadir sebagai bahan bakar utama. Alunan melodi lo-fi, beat eksperimental, hingga soundtrack penuh cerita senantiasa mengudara di kamar, mengaburkan batas antara realita dan fiksi, sekaligus menjaga fokus tetap tajam dalam melahirkan karya inovatif.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <!-- <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div data-aos="fade-right" class="space-y-6">
+                <h2 class="font-['Space_Grotesk'] text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+                    The Captain.
+                </h2>
+                <p class="text-gray-400 leading-relaxed font-light">
+                    I am a digital architect navigating the vast space of frontend development, design systems, and creative tech. Passionate about transforming complex problems into fluid, high-performance interfaces.
+                </p>
+
+                <div class="pt-4">
+                    <h4 class="text-sm font-semibold tracking-wider text-purple-300 uppercase mb-3">Cosmic Tools</h4>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="tech-badge">HTML5</span>
+                        <span class="tech-badge">Tailwind CSS</span>
+                        <span class="tech-badge">JavaScript</span>
+                        <span class="tech-badge">Linux Mint</span>
+                        <span class="tech-badge">Git & GitHub</span>
+                    </div>
+                </div>
+            </div>
+            <div data-aos="fade-left" class="relative group">
+                <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-fuchsia-600 rounded-2xl blur opacity-30 group-hover:opacity-60 transition duration-1000"></div>
+                <div class="relative bg-[#130d31]/80 border border-purple-500/20 p-8 rounded-2xl backdrop-blur-md">
+                    <h3 class="font-['Space_Grotesk'] text-xl font-bold text-purple-300 mb-4"><i class="fa-solid fa-terminal mr-2"></i> system_log --info</h3>
+                    <ul class="space-y-3 text-sm font-mono text-gray-300">
+                        <li><span class="text-fuchsia-400">⚡ Status:</span> Continuous Learning</li>
+                        <li><span class="text-fuchsia-400">🛰️ Interest:</span> Animations, UI/UX, Server Tinkering</li>
+                        <li><span class="text-fuchsia-400">🌌 Environment:</span> Dark Mode, Cyberpunk/Lo-Fi Beats</li>
+                    </ul>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+    <section id="skills" class="py-24 px-4 md:px-12 max-w-5xl mx-auto w-full box-border">
+        <div class="text-center mb-12" data-aos="fade-up">
+            <h2 class="font-['Space_Grotesk'] text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+                My Skills
+            </h2>
+            <p class="text-gray-400 mt-3 text-sm md:text-base font-light">Teknologi dan tools yang saya gunakan untuk membentuk ekosistem digital.</p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-2 sm:gap-4 md:gap-6 w-full" data-aos="fade-up" data-aos-delay="200">
+            
+            <div class="skill-card group">
+                <div class="skill-icon-wrapper group-hover:border-yellow-500/50 group-hover:shadow-[0_0_15px_rgba(234,179,8,0.2)]">
+                    <img src="./source/Skills/javascript.svg" alt="JavaScript" class="skill-img">
+                </div>
+                <h3 class="skill-title">JavaScript</h3>
+            </div>
+
+            <div class="skill-card group">
+                <div class="skill-icon-wrapper group-hover:border-orange-500/50 group-hover:shadow-[0_0_15px_rgba(249,115,22,0.2)]">
+                    <img src="./source/Skills/html.svg" alt="HTML5" class="skill-img">
+                </div>
+                <h3 class="skill-title">HTML</h3>
+            </div>
+
+            <div class="skill-card group">
+                <div class="skill-icon-wrapper group-hover:border-white/30 group-hover:shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                    <img src="./source/Skills/github.svg" alt="GitHub" class="skill-img invert">
+                </div>
+                <h3 class="skill-title">GitHub</h3>
+            </div>
+
+            <div class="skill-card group">
+                <div class="skill-icon-wrapper group-hover:border-cyan-400/50 group-hover:shadow-[0_0_15px_rgba(34,211,238,0.2)]">
+                    <img src="./source/Skills/canva.svg" alt="Canva" class="skill-img">
+                </div>
+                <h3 class="skill-title">Canva</h3>
+            </div>
+
+            <div class="skill-card group">
+                <div class="skill-icon-wrapper group-hover:border-blue-500/50 group-hover:shadow-[0_0_15px_rgba(59,130,246,0.2)]">
+                    <img src="./source/Skills/photoshop.svg" alt="Photoshop" class="skill-img">
+                </div>
+                <h3 class="skill-title">Photoshop</h3>
+            </div>
+
+            <div class="skill-card group">
+                <div class="skill-icon-wrapper group-hover:border-teal-400/50 group-hover:shadow-[0_0_15px_rgba(45,212,191,0.2)]">
+                    <img src="./source/Skills/tailwindcss.svg" alt="Tailwind CSS" class="skill-img">
+                </div>
+                <h3 class="skill-title">Tailwind</h3>
+            </div>
+
+            <div class="skill-card group">
+                <div class="skill-icon-wrapper group-hover:border-blue-400/50 group-hover:shadow-[0_0_15px_rgba(96,165,250,0.2)]">
+                    <img src="./source/Skills/kali-linux.svg" alt="Kali Linux" class="skill-img">
+                </div>
+                <h3 class="skill-title">Kali Linux</h3>
+            </div>
+
+            <div class="skill-card group opacity-60 border-dashed border-purple-500/20">
+                <div class="skill-icon-wrapper border-purple-500/10">
+                    <img src="./source/Skills/css.svg" alt="CSS3" class="skill-img">
+                </div>
+                <h3 class="skill-title text-gray-500">CSS3</h3>
+            </div>
+
+            <div class="skill-card group opacity-60 border-dashed border-purple-500/20">
+                <div class="skill-icon-wrapper border-purple-500/10">
+                    <img src="./source/Skills/git.svg" alt="Git" class="skill-img">
+                </div>
+                <h3 class="skill-title text-gray-500">Git Systems</h3>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="education" class="py-24 px-4 md:px-12 max-w-4xl mx-auto w-full box-border">
+        <div class="text-center mb-16">
+            <h2 class="font-['Space_Grotesk'] text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+                Education Journey
+            </h2>
+            <p class="text-gray-400 mt-3 text-sm md:text-base font-light">Jejak akademis dan landasan berfikir yang telah saya tempuh.</p>
+        </div>
+
+        <div class="w-full bg-[#130d31]/20 backdrop-blur-md border border-purple-500/20 rounded-3xl p-6 md:p-10 shadow-[0_20px_50px_rgba(11,7,30,0.6)]">
+            
+            <div id="edu-dropdown-header" class="flex justify-between items-center border-b border-purple-500/10 pb-6 cursor-pointer select-none group">
+                <div class="flex items-center gap-3">
+                    <div class="w-3 h-3 rounded-full bg-purple-500 animate-pulse"></div>
+                    <h3 class="font-['Space_Grotesk'] text-lg md:text-xl font-bold text-purple-300 tracking-wide group-hover:text-purple-400 transition-colors">Academic Chronicles</h3>
+                </div>
+                <i id="edu-arrow-icon" class="fa-solid fa-chevron-down text-purple-400 text-sm md:text-base transition-transform duration-300 rotate-180"></i>
+            </div>
+
+            <div id="edu-dropdown-content" style="max-height: 2000px; opacity: 1;" class="transition-all duration-500 ease-in-out overflow-hidden">
+                
+                <div id="timeline-body" class="relative w-full pl-8 md:pl-16 mt-10 box-border">
+                    
+                    <div class="edu-item relative mb-12 opacity-0" id="edu-ta">
+                        <div class="edu-dot border-purple-500 bg-[#0b071e]"></div>
+                        <span class="edu-year text-purple-400 border-purple-500/20 bg-purple-500/5">2011 - 2012</span>
+                        <h4 class="edu-school"><span class="text-purple-400">TA</span> - Al Azhar Syifa Budi Solo</h4>
+                        <p class="edu-desc">Langkah awal menapakkan kaki di dunia pendidikan kelompok bermain.</p>
+                    </div>
+
+                    <div class="edu-item relative mb-12 opacity-0" id="edu-tk">
+                        <div class="edu-dot border-fuchsia-500 bg-[#0b071e]"></div>
+                        <span class="edu-year text-fuchsia-400 border-fuchsia-500/20 bg-fuchsia-500/5">2012 - 2014</span>
+                        <h4 class="edu-school"><span class="text-fuchsia-400">TK</span> - Al Azhar Syifa Budi Solo</h4>
+                        <p class="edu-desc">Eksplorasi kreativitas dasar, motorik, dan pembentukan karakter awal anak.</p>
+                    </div>
+
+                    <div class="edu-item relative mb-12 opacity-0" id="edu-sd">
+                        <div class="edu-dot border-pink-500 bg-[#0b071e]"></div>
+                        <span class="edu-year text-pink-400 border-pink-500/20 bg-pink-500/5">2014 - 2020</span>
+                        <h4 class="edu-school"><span class="text-pink-400">SD</span> - Al Azhar Syifa Budi Solo</h4>
+                        <p class="edu-desc">Membangun fondasi akademik utama, logika berhitung, dan dasar pengetahuan alam.</p>
+                    </div>
+
+                    <div class="edu-item relative mb-12 opacity-0" id="edu-smp">
+                        <div class="edu-dot border-indigo-500 bg-[#0b071e]"></div>
+                        <span class="edu-year text-indigo-400 border-indigo-500/20 bg-indigo-500/5">2020 - 2023</span>
+                        <h4 class="edu-school"><span class="text-indigo-400">SMP</span> - Al Azhar Syifa Budi Solo</h4>
+                        <p class="edu-desc">Memperdalam interaksi sosial, organisasi, serta pengenalan dasar teknologi informasi.</p>
+                    </div>
+
+                    <div class="edu-item relative opacity-0" id="edu-sma">
+                        <div class="edu-dot border-purple-400 bg-[#0b071e]"></div>
+                        <span class="edu-year text-purple-300 border-purple-400/20 bg-purple-400/5">2023 - 2026</span>
+                        <h4 class="edu-school"><span class="text-purple-300">SMA</span> - Al Azhar Syifa Budi Solo</h4>
+                        <p class="edu-desc">Fokus pada pendalaman materi tingkat lanjut guna mempersiapkan gerbang menuju perguruan tinggi.</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="gallery" class="py-24 px-4 md:px-12 max-w-4xl mx-auto w-full box-border">
+        <div class="text-center mb-12">
+            <h2 class="font-['Space_Grotesk'] text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+                Gallery
+            </h2>
+            <p class="text-gray-400 mt-3 text-sm md:text-base font-light">Serpihan momen acak yang terekam di dalam ruang waktu.</p>
+        </div>
+
+        <div class="flex items-center justify-between gap-4 md:gap-8 w-full">
+            
+            <button id="prev-gallery" class="gallery-nav-btn" aria-label="Previous Slide">
+                <i class="fa-solid fa-chevron-left"></i>
+            </button>
+
+            <div class="gallery-single-frame shadow-[0_0_50px_rgba(147,51,234,0.15)]">
+                <div id="gallery-container" class="w-full h-full relative">
+                    </div>
+                
+                <div id="gallery-counter" class="absolute bottom-4 right-6 font-['Space_Grotesk'] text-xs font-bold tracking-widest text-purple-300 bg-[#0b071e]/60 backdrop-blur-md py-1 px-3 rounded-full border border-purple-500/20 select-none">
+                    1 / 1
+                </div>
+            </div>
+
+            <button id="next-gallery" class="gallery-nav-btn" aria-label="Next Slide">
+                <i class="fa-solid fa-chevron-right"></i>
+            </button>
+            
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-24 px-6 md:px-12 max-w-6xl mx-auto">
+        <div class="text-center mb-16" data-aos="fade-up">
+            <h2 class="font-['Space_Grotesk'] text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+                My Project
+            </h2>
+            <p class="text-gray-400 mt-3 font-light">A showcase of project that I have been running so far.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Project Card 1 -->
+            <div data-aos="fade-up" data-aos-delay="100" class="project-card group relative overflow-hidden rounded-2xl border border-purple-500/10 bg-[#130d31]/40 backdrop-blur-sm transition-all duration-500 hover:border-purple-500/40">
+                <div class="overflow-hidden relative h-48 md:h-60">
+                    <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&auto=format&fit=crop&q=60" 
+                         alt="Project 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 filter brightness-90 group-hover:brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#130d31] to-transparent"></div>
+                </div>
+                <div class="p-6 relative">
+                    <h3 class="font-['Space_Grotesk'] text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300">UI Design System</h3>
+                    <p class="text-gray-400 text-sm mt-2 font-light leading-relaxed">A futuristic component library created for sleek, modern web interfaces with dark-mode optimized aesthetics.</p>
+                    <div class="flex space-x-3 mt-4 text-xs font-mono text-purple-300">
+                        <span>#Tailwind</span> <span>#CSS_Art</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div data-aos="fade-up" data-aos-delay="200" class="project-card group relative overflow-hidden rounded-2xl border border-purple-500/10 bg-[#130d31]/40 backdrop-blur-sm transition-all duration-500 hover:border-purple-500/40">
+                <div class="overflow-hidden relative h-48 md:h-60">
+                    <img src="https://images.unsplash.com/photo-1607799279861-4dd421887fb3?w=600&auto=format&fit=crop&q=60" 
+                         alt="Project 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-700 filter brightness-90 group-hover:brightness-100">
+                    <div class="absolute inset-0 bg-gradient-to-t from-[#130d31] to-transparent"></div>
+                </div>
+                <div class="p-6 relative">
+                    <h3 class="font-['Space_Grotesk'] text-xl font-bold text-white group-hover:text-purple-400 transition-colors duration-300">Automated Space Script</h3>
+                    <p class="text-gray-400 text-sm mt-2 font-light leading-relaxed">Custom backend integration automation utilizing JavaScript to orchestrate dynamic system environments smoothly.</p>
+                    <div class="flex space-x-3 mt-4 text-xs font-mono text-purple-300">
+                        <span>#JavaScript</span> <span>#NodeJS</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-24 px-6 md:px-12 max-w-4xl mx-auto text-center relative">
+        <div data-aos="zoom-out" class="space-y-6">
+            <h2 class="font-['Space_Grotesk'] text-3xl md:text-5xl font-bold bg-gradient-to-r from-purple-400 to-fuchsia-400 bg-clip-text text-transparent">
+                Contact me
+            </h2>
+            <p class="text-gray-400 max-w-md mx-auto font-light">
+                Have a project in mind or want to talk about something else? Contact me below.
+            </p>
+            
+            <div class="pt-8 flex justify-center space-x-6 text-2xl">
+                <a href="https://github.com/iluviee" class="hover:text-purple-400 transition-colors duration-300 transform hover:scale-120"><i class="fa-brands fa-github"></i></a>
+                <a href="https://instagram.com/gadingagani" class="hover:text-purple-400 transition-colors duration-300 transform hover:scale-120"><i class="fa-brands fa-instagram"></i></a>
+                <a href="mailto:gdg140908@gmail.com" class="hover:text-purple-400 transition-colors duration-300 transform hover:scale-120"><i class="fa-solid fa-envelope"></i></a>
+            </div>
+
+            <p class="text-xs text-gray-600 font-mono pt-12">
+                &copy; 2026 iLuvieeDev.
+            </p>
+        </div>
+    </section>
+
+    <!-- AOS Animation JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Custom JS -->
+    <script src="script.js"></script>
+</body>
+</html>
