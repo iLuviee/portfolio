@@ -7,7 +7,7 @@ html, body {
     max-width: 100%;
     overflow-x: hidden;
     position: relative;
-    cursor: default;
+    cursor: default !important;
 }
 
 .nebula-1 {
