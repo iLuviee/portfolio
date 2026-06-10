@@ -2,6 +2,52 @@
 
 /* Glowing Nebulas Effect */
 
+/* 1. Hilangkan kursor bawaan di seluruh web */
+html, body {
+  cursor: none;
+}
+
+/* 2. Desain Kursor Utama (Titik Tengah) */
+.custom-cursor {
+  width: 8px;
+  height: 8px;
+  background-color: #ff4757; /* Warna merah aesthetic, bisa kamu ganti */
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* Supaya tidak mengganggu klik pada tombol */
+  z-index: 9999; /* Supaya selalu di paling depan */
+}
+
+/* 3. Desain Buntut Kursor (Tail) */
+.cursor-tail {
+  width: 30px;
+  height: 30px;
+  border: 2px solid rgba(214, 48, 49, 0.5); /* Warna border transparan */
+  background-color: rgba(255, 71, 87, 0.1); /* Efek isi kaca/glassmorphism */
+  border-radius: 50%;
+  position: fixed;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  z-index: 9998;
+  
+  /* KUNCI ESTETIK: Efek transisi smooth yang bikin efek 'ketinggalan' (tail) */
+  transition: transform 0.15s cubic-bezier(0.25, 1, 0.5, 1), 
+              top 0.12s ease-out, 
+              left 0.12s ease-out;
+}
+
+/* Tambahan: Efek saat kursor menyentuh link atau tombol */
+.custom-cursor.hover {
+  transform: translate(-50%, -50%) scale(0.5); /* Mengecil */
+}
+
+.cursor-tail.hover {
+  transform: translate(-50%, -50%) scale(1.5); /* Membesar */
+  background-color: rgba(255, 71, 87, 0.3);
+  border-color: #ff4757;
+}
+
 html, body {
     width: 100%;
     max-width: 100%;
