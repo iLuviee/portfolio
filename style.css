@@ -3,9 +3,9 @@
 /* Glowing Nebulas Effect */
 
 /* 1. Hilangkan kursor bawaan di seluruh web */
-html, body {
+/* html, body {
   cursor: none;
-}
+} */
 
 /* 2. Desain Kursor Utama (Titik Tengah) */
 .custom-cursor {
