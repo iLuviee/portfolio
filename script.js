@@ -292,3 +292,30 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 // END HERE
+
+// cursor start here
+const cursor = document.querySelector('.custom-cursor');
+const tail = document.querySelector('.cursor-tail');
+
+window.addEventListener('mousemove', (e) => {
+  // Pindahkan posisi kursor sesuai koordinat mouse
+  cursor.style.left = e.clientX + 'px';
+  cursor.style.top = e.clientY + 'px';
+  
+  tail.style.left = e.clientX + 'px';
+  tail.style.top = e.clientY + 'px';
+});
+
+// Efek interaktif saat mouse menyentuh link atau tombol (hover)
+const hoverElements = document.querySelectorAll('a, button, .clickable');
+hoverElements.forEach(elem => {
+  elem.addEventListener('mouseenter', () => {
+    cursor.classList.add('hover');
+    tail.classList.add('hover');
+  });
+  elem.addEventListener('mouseleave', () => {
+    cursor.classList.remove('hover');
+    tail.classList.remove('hover');
+  });
+});
+//end here
